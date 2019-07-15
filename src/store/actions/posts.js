@@ -8,23 +8,12 @@ export const PostsSuccess = (posts) => {
     }
 }
 
-// export const PostsFail = (error) => {
-//     return {
-//         type: actionTypes.SET_POSTS,
-//         error
-//     }
-// }
 
-// export const PostsStart = () => {
-//     return {
-//         type: actionTypes.SET_POSTS
-//     }
-// }
 
 export const PostsSendRequest = (data) => {
     return dispatch => {
         //dispatch(PostsStart())
-        axiosInstance('/posts')
+        axiosInstance({url:'/posts.json'})
             .then((response) => {
               dispatch(PostsSuccess(response.data))
             })
@@ -47,3 +36,16 @@ export const updatePost = (userObj) => {
         userObj
     }
 };
+
+// export const PostsFail = (error) => {
+//     return {
+//         type: actionTypes.SET_POSTS,
+//         error
+//     }
+// }
+
+// export const PostsStart = () => {
+//     return {
+//         type: actionTypes.SET_POSTS
+//     }
+// }
