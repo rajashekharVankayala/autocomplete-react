@@ -15,7 +15,7 @@ export const PostsSendRequest = (data) => {
         //dispatch(PostsStart())
         axiosInstance({url:'/posts.json'})
             .then((response) => {
-              dispatch(PostsSuccess(response.data))
+              dispatch(PostsSuccess(response.data.posts))
             })
             .catch((error) => {
            //   dispatch(PostsFail(error))
