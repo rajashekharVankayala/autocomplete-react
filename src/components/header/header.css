@@ -1,0 +1,17 @@
+header{
+    display: flex;
+    align-items: center;
+    background: #1f6c71;
+}
+#logo {
+    flex:1;
+}
+
+#info {
+    flex:1
+}
+
+#logo img{
+    width: 100px;
+    float: left;
+}

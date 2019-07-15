@@ -1,0 +1,35 @@
+
+.user--idText {
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    margin: 10px auto;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    color: #1f6c71;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 5%;
+    font-size: 26px;
+}
+
+.userInfo--title, .userInfo--body {
+    text-align: left;
+    display: flex;
+    margin: 10px;
+    font-size: 20px
+}
+.user--title, .user--body{
+    font-weight: bold
+}
+
+.user--titleText{
+    font-size: 16px;
+    margin-left: 20px
+}
+
+.user--bodyText{
+    font-size: 16px;
+    margin-left: 14px
+}

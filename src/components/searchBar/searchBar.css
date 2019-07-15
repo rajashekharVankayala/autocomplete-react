@@ -1,0 +1,12 @@
+body {
+    font-family: sans-serif;
+  }
+  
+  input {
+    transition: .5s all;
+    border-radius: 20px;
+    outline: none;
+    border: 1px solid #999;
+    padding: 0.5rem;
+    width: 400px;
+  }
