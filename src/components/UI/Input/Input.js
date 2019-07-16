@@ -12,6 +12,7 @@ export default function Input(props) {
         <Fragment>
             <input
                 onChange={props.onChange}
+                onFocus={props.onChange}
                 onBlur={props.onBlur}
                 className={props.className}
                 {...props.elementConfig}

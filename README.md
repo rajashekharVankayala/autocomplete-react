@@ -1,3 +1,11 @@
+
+
+## info
+Fetching data from local json file. If we want to get the data from server just change baseURl in axiosInstance js file [src/axiosInstance.js](src/axiosInstance.js)
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

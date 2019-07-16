@@ -1,7 +1,8 @@
-import React, {Component, Fragment} from 'react';
-import { connect } from 'react-redux'
+import React, {Component} from 'react';
+
 import Input from '../../UI/Input/Input'
 import Button from '../../UI/Button/Button'
+
 class UpdateUserDetail extends Component {
     constructor(props){
         super(props);
@@ -29,7 +30,6 @@ class UpdateUserDetail extends Component {
                         placeholder: 'Body'
                     },
                     validationKey:{
-                        required: true,
                         regex: ''
                     },
                     value: '',
@@ -42,15 +42,16 @@ class UpdateUserDetail extends Component {
 
     componentDidMount(){
         let inputFields = [...this.state.fields];
-        inputFields = inputFields.map((field, index)=>{
+        inputFields.forEach((field, index)=>{
             const value = this.props.post[field.elementConfig.placeholder.toLowerCase()];
             let fields = [...this.state.fields];
             fields[index].value = value;
-            this.setState({
+            return this.setState({
                 ...this.state,
                 fields: [...fields]
             });
         })
+
     }
 
     updateUserInfo(event,index){
@@ -114,6 +115,6 @@ class UpdateUserDetail extends Component {
 
 }
 
-const mapStateToProps = () =>{};
 
-export default connect()(UpdateUserDetail);
+
+export default UpdateUserDetail;

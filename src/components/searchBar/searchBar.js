@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import './searchBar.css'
 import Suggestions from './suggestions/suggestions'
 import Input from '../UI/Input/Input'
-import BackDrop from '../UI/Backdrop/Backdrop'
 
 export default function SearchBar(props) {
 
@@ -20,7 +19,7 @@ export default function SearchBar(props) {
     const [showSuggestions, setShowSuggestions] = useState(false);
     useEffect(() => { }, [props.suggestions]);
 
-    let inputClasses = [''];
+    let inputClasses = ['inputElement'];
 
     let searchPost = (userSearch) => {
         if (!userSearch) return setSearchResults([]);
@@ -58,7 +57,8 @@ export default function SearchBar(props) {
         }
         let hideSuggestion = setTimeout(() => {
             clearTimeout(hideSuggestion)
-            searchHandler('', false)
+            let field = {...searchField};
+            searchHandler(field.value, false)
             setShowSuggestions(false)
         }, 200)
     }
@@ -70,7 +70,7 @@ export default function SearchBar(props) {
                 <div className="autocomplete">
                     <Input 
                         onChange={searchData}
-                        className={[]}
+                        className={inputClasses}
                         onBlur={clearSuggestions}
                         elementConfig = {searchField.elementConfig}
                         value={searchField.value}

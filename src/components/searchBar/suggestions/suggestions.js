@@ -9,7 +9,7 @@ export default function suggestions({searchResults,selectedPost}){
         <ul className="autocomplete-items">
         {  
             searchResults.map((list, index) => (
-                <li key={list.id} onClick={()=>selectedPost(Number(list.id))}>
+                <li key={index} onClick={()=>selectedPost(Number(list.id))}>
                    { list.title }
                 </li>
             ))

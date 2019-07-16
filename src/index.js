@@ -12,6 +12,7 @@ import postsReducer from './store/reducers/posts'
 const rootReducer = combineReducers({
     posts: postsReducer
 })
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(rootReducer,composeEnhancers(

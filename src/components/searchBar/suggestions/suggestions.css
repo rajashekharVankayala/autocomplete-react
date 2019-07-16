@@ -19,7 +19,6 @@
     position: absolute;
     z-index: 1030;
     min-width: calc(400px + 1rem);
-    
     padding: 8px 0;
     margin: 7px 0;
     background: #fff;
@@ -32,5 +31,19 @@
     font-size: 13px;
     line-height: 1.5;
     overflow-y: auto;
-    max-height: 143px;
+    max-height: 200px;
+    right: 110px
+}
+
+@media only screen and (max-width: 1038px) {
+  .autocomplete-items {
+    right: 30px
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .autocomplete-items {
+    right: 10px;
+    min-width: calc(300px + 1rem);
+  }
 }

@@ -8,6 +8,15 @@ export const PostsSuccess = (posts) => {
     }
 }
 
+export const PostsFail = (error) => {
+    return {
+        type: actionTypes.POST_FAIL,
+        error
+    }
+}
+
+
+
 
 
 export const PostsSendRequest = (data) => {
@@ -18,7 +27,7 @@ export const PostsSendRequest = (data) => {
               dispatch(PostsSuccess(response.data.posts))
             })
             .catch((error) => {
-           //   dispatch(PostsFail(error))
+              dispatch(PostsFail(error))
             })
     }
 }
@@ -31,9 +40,12 @@ export const setSelectedPost = (postIndex) => {
 }
 
 export const updatePost = (userObj) => {
-    return {
-        type: actionTypes.EDIT_POST,
-        userObj
+    return dispatch => {
+        dispatch({
+            type: actionTypes.EDIT_POST,
+            userObj
+        })
+        dispatch(setSelectedPost(userObj.id));
     }
 };
 
