@@ -17,7 +17,7 @@ class SearchPosts extends Component {
     }
 
     selectedPost(index){
-        this.props.onSetSelectedPost(index)
+        if(index !== 999)this.props.onSetSelectedPost(index)
     }
 
 

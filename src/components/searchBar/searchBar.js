@@ -37,7 +37,7 @@ export default function SearchBar(props) {
     let searchPost = (userSearch) => {
         if (!userSearch) return setSearchResults([]);
         let result = props.suggestions.filter(data => data.title.toLowerCase().includes(userSearch));
-        result = result.length ? result : [{ title: 'No Data found', id:Math.random() }];
+        result = result.length ? result : [{ title: 'No Data found', id:999 }];
         setSearchResults(result);
     };
 
