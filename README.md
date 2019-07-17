@@ -1,4 +1,24 @@
+## Autocomplete App 
 
+This Application includes a built-in prediction service what you're typing in search bar, made with React. 
+View the [demo](https://searchpost.netlify.com/)
+
+<img src="application-preview.png" alt="preview">
+
+## Built With
+
+* ES6
+* React.js
+* Redux
+* Axios.js
+
+## Main Files
+
+* [App](src/App.js)
+    * [Search-posts](src/container/Search-posts.js)
+    * [UserInfo](src/components/UserInfo)
+* [Configuration](src/index.js)
+* [Store](src/store)
 
 ## info
 Fetching data from local json file. If we want to get the data from server just change baseURl in axiosInstance js file [src/axiosInstance.js](src/axiosInstance.js)

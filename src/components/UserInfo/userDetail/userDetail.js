@@ -12,7 +12,7 @@ export default function userDetails({post: {id, title, body}}){
                     <div className="user--title">Title:</div>
                     <div className="user--titleText">{title}</div>
                 </div>
-                <div className="userInfo--body">
+                <div className="userInfo--body" data-js="userInfo--body">
                     <div className="user--body">Body:</div>
                     <div className="user--bodyText">{body}</div>
                 </div>

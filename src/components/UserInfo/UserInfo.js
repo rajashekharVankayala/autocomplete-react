@@ -6,6 +6,13 @@ import * as actions from '../../store/actions/index'
 import UserDetail from './userDetail/userDetail'
 import UpdateUserDetail from './UpdateUserDetail/UpdateUserDetail'
 
+/***
+ * 1 .Showing Selected Data: This component is to displaying selected data [UserDetail]
+ * 
+ * 2. User can Edit the selected data [UpdateUserDetail]
+ */
+
+
 class UserInfo extends Component {
 
     constructor(props){
@@ -17,13 +24,17 @@ class UserInfo extends Component {
         };
     }
 
-
+    // Updates the state to display form or not.
     editPost(show = true){
         this.setState({
             editForm: show
         })
     };
 
+    /**
+     * updateUserDetailsFun Function is update the local state and updates the
+     * store with user entered data with respective ID
+     */
     updateUserDetailsFun(data){
         this.editPost(false);
         this.props.updatePost(data);
@@ -34,7 +45,7 @@ class UserInfo extends Component {
         if(!validPost) return <div className="userInfo--selectAnyPost">Select any post</div>
         return   (
             
-            <div className="userInfo--details">
+            <div className="userInfo--details" data-js="userInfo--details">
                 {
                     this.state.editForm ?  
                     ( <UpdateUserDetail

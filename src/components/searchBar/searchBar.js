@@ -3,6 +3,14 @@ import './searchBar.css'
 import Suggestions from './suggestions/suggestions'
 import Input from '../UI/Input/Input'
 
+/**
+ * This component is Implemented using Function and React Hooks
+ * 
+ * Functionality: Implemented Autocomplete functionality
+ *                and the results will pass to ->
+ *                Suggestions component
+ */
+
 export default function SearchBar(props) {
 
     let field = {
@@ -21,12 +29,21 @@ export default function SearchBar(props) {
 
     let inputClasses = ['inputElement'];
 
+     /*
+     * searchPost function is filter the data in local store according to the user input
+     * then updates the state [setSearchResults]
+     */
+
     let searchPost = (userSearch) => {
         if (!userSearch) return setSearchResults([]);
         let result = props.suggestions.filter(data => data.title.toLowerCase().includes(userSearch));
         result = result.length ? result : [{ title: 'No Data found', id:Math.random() }];
         setSearchResults(result);
     };
+
+    /**
+     * searchHandler function helps to update the searchField state
+     */
 
     let searchHandler = (value,touched) => {
         let field = {...searchField};
@@ -36,6 +53,10 @@ export default function SearchBar(props) {
             touched
         });
     }
+
+    /**
+     * searchData functions will execute when user enter the text
+     */
 
     let searchData = ({ target: { value } }) => {
         let userSearch = value.trimLeft().toLowerCase();
@@ -48,7 +69,10 @@ export default function SearchBar(props) {
         setShowSuggestions(true);
     }
 
-
+    /**
+     * Excute on Blur action
+     * Hides the suggestions and updates the state
+     */
     let clearSuggestions = function ({ target: { value } }) {
         let userSearch = value.trimLeft().toLowerCase();
         if(!userSearch) {
@@ -64,8 +88,7 @@ export default function SearchBar(props) {
     }
 
     return (
-        <div id="search-box" data-info="search bar element">
-            {/* <BackDrop show={true}/> */}
+        <div id="search-box" data-js="search bar element">
             <form onSubmit={(e) => e.preventDefault()}>
                 <div className="autocomplete">
                     <Input 

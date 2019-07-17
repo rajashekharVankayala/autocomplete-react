@@ -1,8 +1,13 @@
 import React, { Component }  from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../store/actions/index'
-
 import SearchField from '../components/searchBar/searchBar'
+
+/**
+ * Search Bar container
+ *   On Mount Fetches the data from server and Update the state with the result
+ *   Pass data to child component
+ */
 
 class SearchPosts extends Component {
 
