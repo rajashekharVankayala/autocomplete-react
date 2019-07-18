@@ -7,6 +7,7 @@ const withErrorHandler = (WrapComponent, axios) => {
         constructor(props){
             super(props);
             this.componentMount();
+            this.errorConfirmHandler = this.errorConfirmHandler.bind(this);
         }
         state = {
             error: null
@@ -25,7 +26,7 @@ const withErrorHandler = (WrapComponent, axios) => {
             })
         }
 
-        errorConfirmHandler = () => {
+        errorConfirmHandler(){
             this.setState({
                 error: null
             });   

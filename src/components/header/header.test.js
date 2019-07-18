@@ -25,13 +25,13 @@ describe('Header Component', () => {
     })
 
     it('HEADER should render', () => {
-        wrapper = findByAttr(component,'header--component')
+        wrapper = findByAttr(component,'header-component')
         expect(wrapper.length).toBe(1)
     });
 
     it('HEADER component children', () => {
-        wrapper = findByAttr(component,'header--component')
-        expect(wrapper.find('header').children().length).toBe(2)
+        wrapper = findByAttr(component,'header-component')
+        expect(wrapper.find('header').children().length).toBe(1)
     });
 
     it('Image should render', () => {
@@ -39,9 +39,5 @@ describe('Header Component', () => {
         expect(wrapper).toEqual(logo)
     });
 
-    it('SearchPosts Component', () => {
-        wrapper = component.find(SearchPosts);
-        expect(wrapper.length).toBe(1)
-    })
 })
 

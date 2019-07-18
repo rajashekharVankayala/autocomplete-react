@@ -1,5 +1,5 @@
-import  * as actionTypes from './actionTypes'
-import axiosInstance from '../../axiosInstance';
+import * as actionTypes from '../constants/actionTypes'
+import axiosInstance from '../axiosInstance';
 
 export const PostsSuccess = (posts) => {
     return {
@@ -14,10 +14,6 @@ export const PostsFail = (error) => {
         error
     }
 }
-
-
-
-
 
 export const PostsSendRequest = (data) => {
     return dispatch => {
@@ -48,16 +44,3 @@ export const updatePost = (userObj) => {
         dispatch(setSelectedPost(userObj.id));
     }
 };
-
-// export const PostsFail = (error) => {
-//     return {
-//         type: actionTypes.SET_POSTS,
-//         error
-//     }
-// }
-
-// export const PostsStart = () => {
-//     return {
-//         type: actionTypes.SET_POSTS
-//     }
-// }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import './UserInfo.css'
 import Button from '../UI/Button/Button'
-import * as actions from '../../store/actions/index'
+import * as actions from '../../actions/index'
 import UserDetail from './userDetail/userDetail'
 import UpdateUserDetail from './UpdateUserDetail/UpdateUserDetail'
 
@@ -18,6 +18,7 @@ class UserInfo extends Component {
     constructor(props){
         super(props);
         this.editPost = this.editPost.bind(this);
+        this.cancelEditPost = this.cancelEditPost.bind(this);
         this.updateUserDetailsFun = this.updateUserDetailsFun.bind(this);
         this.state = {
             editForm: false,
@@ -31,6 +32,11 @@ class UserInfo extends Component {
         })
     };
 
+    cancelEditPost(){
+        this.editPost();
+        this.props.hideDetails()
+    }
+
     /**
      * updateUserDetailsFun Function is update the local state and updates the
      * store with user entered data with respective ID
@@ -42,10 +48,10 @@ class UserInfo extends Component {
     
     render(){
         const validPost = Object.keys(this.props.post).length;
-        if(!validPost) return <div className="userInfo--selectAnyPost">Select any post</div>
+        if(!validPost) return <div className="user-info-selectAnyPost">Select any post</div>
         return   (
             
-            <div className="userInfo--details" data-js="userInfo--details">
+            <div className="user-info-details" data-js="user-info-details">
                 {
                     this.state.editForm ?  
                     ( <UpdateUserDetail
@@ -57,8 +63,9 @@ class UserInfo extends Component {
 
              {
                 this.state.editForm ? null : (
-                    <div className="userInfo-buttons">
+                    <div className="user-info-buttons">
                         <Button bthType="edit" clicked={this.editPost}>Edit</Button>
+                        <Button bthType="cancel" clicked={this.cancelEditPost}>Search</Button>
                     </div>
                  )
              }

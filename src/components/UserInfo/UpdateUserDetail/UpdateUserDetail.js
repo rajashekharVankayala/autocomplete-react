@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import './UpdateUserDetail.css'
 import Input from '../../UI/Input/Input'
 import Button from '../../UI/Button/Button'
 
@@ -8,8 +8,9 @@ class UpdateUserDetail extends Component {
         super(props);
         this.updateUserInfo = this.updateUserInfo.bind(this);
         this.saveUserDetail = this.saveUserDetail.bind(this);
-        
+        this.cancelUpdate = this.cancelUpdate.bind(this);
         this.state = {
+            formValid: true,
             fields:[
                  {
                     elementConfig: {
@@ -21,8 +22,9 @@ class UpdateUserDetail extends Component {
                         regex: ''
                     },
                     value: '',
-                    valid: false,
-                    touched: false
+                    valid: true,
+                    touched: false,
+                    errorMessage: 'Please enter the title'
                 },
                  {
                     elementConfig: {
@@ -33,8 +35,9 @@ class UpdateUserDetail extends Component {
                         regex: ''
                     },
                     value: '',
-                    valid: false,
-                    touched: false
+                    valid: true,
+                    touched: false,
+                    errorMessage: 'Please enter the body'
                 }
             ]
         }
@@ -56,11 +59,29 @@ class UpdateUserDetail extends Component {
 
     updateUserInfo(event,index){
         let inputFields = [...this.state.fields];
-        inputFields[index].value = event.target.value;
+        const val = event.target.value.trim();
+        let formValid = Boolean(val.length);
+        inputFields[index].value = val;
+        inputFields[index].valid = formValid;
+        inputFields[index].touched = true
+        let isFormValid = [];
+        isFormValid = inputFields.reduce((acc,data)=>{
+            const val = data.value.trim();
+            acc.push(val)
+            return acc;
+        },[])
+
+        formValid = Boolean(isFormValid.includes(''));
         this.setState({
             ...this.state,
-            fields: [...inputFields]
+            fields: [...inputFields],
+            formValid: !formValid
         });
+    }
+    
+    cancelUpdate() {
+        let fields = [...this.state.fields];
+        this.setState({formValid: false, fields: [...fields]});
     }
 
     saveUserDetail(){
@@ -68,46 +89,52 @@ class UpdateUserDetail extends Component {
         const {id,userId} = this.props.post;
         let updatedFiled = fields.reduce((acc, data)=>{
             const elementName = data.elementConfig.placeholder.toLowerCase();
-            acc[elementName] = data.value;
+            const val = data.value.trim();
+            acc[elementName] = val;
             return acc;
         },{})
         updatedFiled['id'] = id;
         updatedFiled['userId']= userId;
-        this.props.updateUserDetails(updatedFiled)
+        let {formValid} = {...this.state}
+        if(formValid)this.props.updateUserDetails(updatedFiled)
     }
 
     render(){
         const inputFields = [...this.state.fields];
+        const {formValid} = {...this.state}
         const style = {
             alignItems: 'center',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
-            height: '100%'
+            height: '100%',
+            margin:'10px'
         }
         return (
-            <div style={style}>
+            <div style={style} className="update-user-detail">
+                <div>Edit Form</div>
                 {
                 inputFields.map((field, index) => {
                     return (
-                        <div className="userInfo--title" key={index}>
-                        <div className="user--title">{field.elementConfig.placeholder}:</div>
-                        <div className="user--titleText">
+                        <div className="user-info-title" key={index}>
+                        <div className="user-title">{field.elementConfig.placeholder}:</div>
+                        <div className="user-titleText">
                             <Input
                                  elementConfig= {field.elementConfig}
                                  value={field.value} 
                                  valid={field.valid}
                                  touched={field.touched}
                                  onChange={(e) => this.updateUserInfo(e,index)}
+                                 errorMessage={field.errorMessage}
                                    />
                         </div>
                     </div>
                     )
                 })
             }
-            <div className="userInfo-buttons">
-                <Button btnType="cancel" clicked={this.props.cancelEdit}>Cancel</Button>
-                <Button bthType="edit" clicked={this.saveUserDetail}>Save</Button>
+            <div className="user-info-buttons">
+                <Button bthType="edit" disabled={!formValid} clicked={this.saveUserDetail}>Save</Button>
+                <Button btnType="cancel"  clicked={this.props.cancelEdit}>Cancel</Button>
             </div>
             </div>
         );

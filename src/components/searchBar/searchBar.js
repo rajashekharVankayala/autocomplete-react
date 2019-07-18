@@ -24,18 +24,21 @@ export default function SearchBar(props) {
     
     const [searchField, setSeachField] = useState(field)
     const [searchResults, setSearchResults] = useState([]);
-    const [showSuggestions, setShowSuggestions] = useState(false);
-    useEffect(() => { }, [props.suggestions]);
+    const [showSuggestions, setShowSuggestions] = useState(true);
+    useEffect(() => { 
+        setSearchResults([...props.suggestions])
+    }, [props.suggestions]);
 
-    let inputClasses = ['inputElement'];
+    let inputClasses = ['input-element'];
 
      /*
      * searchPost function is filter the data in local store according to the user input
      * then updates the state [setSearchResults]
      */
 
-    let searchPost = (userSearch) => {
-        if (!userSearch) return setSearchResults([]);
+    let searchPost = (userInput) => {
+        let userSearch = userInput.trim()
+        if (!userSearch) return setSearchResults([...props.suggestions]);
         let result = props.suggestions.filter(data => data.title.toLowerCase().includes(userSearch));
         result = result.length ? result : [{ title: 'No Data found', id:999 }];
         setSearchResults(result);
@@ -83,7 +86,7 @@ export default function SearchBar(props) {
             clearTimeout(hideSuggestion)
             let field = {...searchField};
             searchHandler(field.value, false)
-            setShowSuggestions(false)
+            setShowSuggestions(true)
         }, 200)
     }
 
@@ -99,12 +102,7 @@ export default function SearchBar(props) {
                         value={searchField.value}
                     />
                 </div>
-                {
-                    showSuggestions ? (
-                        <Suggestions selectedPost={props.selectedPost} searchResults={searchResults}/>
-                     ) : null
-                }
-                
+                <Suggestions selectedPost={props.selectedPost} searchResults={searchResults}/>
             </form>
         </div>
     );

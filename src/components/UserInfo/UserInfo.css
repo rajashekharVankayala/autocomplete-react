@@ -1,15 +1,16 @@
-.userInfo--details {
+.user-info-details {
     background: #1f6c71;
     margin: 10px;
     margin-top: 6%;
     color: #fff;
     height: 50vh;
     display: flex;
-
-    flex-direction: column
+    flex-direction: column;
+    padding: 10px;
+    height: 100%;
 }
 
-.userInfo--selectAnyPost {
+.user-info-selectAnyPost {
 
     background: #1f6c71;
     margin: 10px;

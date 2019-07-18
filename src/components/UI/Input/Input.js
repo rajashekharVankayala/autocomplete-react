@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import './Input.css'
 
 export default function Input(props) {
-    let errorMessage = '';
+    
     let { elementConfig : {type = "text"} } = props
     if (props.touched && !props.valid) {
         errorMessage = props.errorMessage || `Enter the valid ${type}`
@@ -19,7 +19,7 @@ export default function Input(props) {
                 value={props.value}
                 maxLength={props.maxLength || 200}
             />
-            <div>{ errorMessage }</div>
+            <div className="error-message">{ errorMessage }</div>
         </Fragment>
     )
 }

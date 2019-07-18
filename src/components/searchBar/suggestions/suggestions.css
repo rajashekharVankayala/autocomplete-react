@@ -16,34 +16,23 @@
   
 
   .autocomplete-items{
-    position: absolute;
+    width: 90%;
     z-index: 1030;
-    min-width: calc(400px + 1rem);
     padding: 8px 0;
-    margin: 7px 0;
+    margin: 7px auto;
     background: #fff;
     border-radius: 4px;
-    -webkit-box-shadow: 0 2px 6px rgba(0,0,0,0.35);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.35);
     list-style: none;
     text-align: left;
     color: #111;
     font-size: 13px;
     line-height: 1.5;
     overflow-y: auto;
-    max-height: 200px;
     right: 110px
 }
 
 @media only screen and (max-width: 1038px) {
   .autocomplete-items {
     right: 30px
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .autocomplete-items {
-    right: 10px;
-    min-width: calc(300px + 1rem);
   }
 }

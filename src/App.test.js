@@ -4,7 +4,7 @@ import App from './App';
 import { Provider } from 'react-redux'
 import {createStore, applyMiddleware,compose, combineReducers} from 'redux'
 import thunk from 'redux-thunk'
-import postsReducer from './store/reducers/posts'
+import postsReducer from './reducers/posts'
 
 const rootReducer = combineReducers({
     posts: postsReducer

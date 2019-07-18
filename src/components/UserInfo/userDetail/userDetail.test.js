@@ -29,8 +29,8 @@ describe('UserDetail Component', () => {
     })
 
     it('userDetail body Element', () => {
-        wrapper = findByAttr(component, 'userInfo--body')
-        wrapper = component.find('.userInfo--body');
+        wrapper = findByAttr(component, 'user-info-body')
+        wrapper = component.find('.user-info-body');
         expect(wrapper.children().length).toBe(2)
     })
 })

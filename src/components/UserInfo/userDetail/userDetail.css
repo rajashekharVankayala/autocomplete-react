@@ -1,5 +1,5 @@
 
-.user--idText {
+.user-idText {
     width: 100px;
     height: 100px;
     background: #fff;
@@ -14,22 +14,26 @@
     font-size: 26px;
 }
 
-.userInfo--title, .userInfo--body {
-    text-align: left;
+.user-info-title, .user-info-body {
     display: flex;
     margin: 10px;
-    font-size: 20px
+    font-size: 20px;
+    width:100%;
+    text-align: left;
 }
-.user--title, .user--body{
-    font-weight: bold
-}
-
-.user--titleText{
-    font-size: 16px;
-    margin-left: 20px
+.user-title, .user-body{
+    font-weight: bold;
+    flex:1;
 }
 
-.user--bodyText{
+.user-titleText{
     font-size: 16px;
-    margin-left: 14px
+    flex:13;
+    text-align: left
+}
+
+.user-bodyText{
+    font-size: 16px;
+    margin-left: 14px;
+    flex:13
 }
