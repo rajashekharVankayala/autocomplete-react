@@ -18,9 +18,9 @@ export const PostsFail = (error) => {
 export const PostsSendRequest = (data) => {
     return dispatch => {
         //dispatch(PostsStart())
-        axiosInstance({url:'/posts.json'})
+        axiosInstance({url:'/posts'})
             .then((response) => {
-              dispatch(PostsSuccess(response.data.posts))
+              dispatch(PostsSuccess(response.data))
             })
             .catch((error) => {
               dispatch(PostsFail(error))

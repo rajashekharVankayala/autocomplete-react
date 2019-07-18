@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    baseURL: window.location.url
+    baseURL: 'http://jsonplaceholder.typicode.com'
 })
 
 const httpRequest = ({url = "/posts", data = '', loader = false}) => {
