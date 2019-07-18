@@ -28,7 +28,10 @@
     font-size: 13px;
     line-height: 1.5;
     overflow-y: auto;
-    right: 110px
+    right: 110px;
+    border:1px solid;
+    transform: translateY(-7px);
+    border: 1px solid #ccc;
 }
 
 @media only screen and (max-width: 1038px) {

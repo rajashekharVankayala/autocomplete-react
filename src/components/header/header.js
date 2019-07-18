@@ -1,7 +1,6 @@
 import React from 'react'
 import logo from '../../assests/svg/logo.svg'
 import './header.css'
-import SearchPosts from '../../container/Search-posts'
 
 /**
  * This component is displays logo

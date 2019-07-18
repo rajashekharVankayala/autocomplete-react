@@ -72,24 +72,6 @@ export default function SearchBar(props) {
         setShowSuggestions(true);
     }
 
-    /**
-     * Excute on Blur action
-     * Hides the suggestions and updates the state
-     */
-    let clearSuggestions = function ({ target: { value } }) {
-        let userSearch = value.trimLeft().toLowerCase();
-        if(!userSearch) {
-            setSearchResults([]);
-            searchHandler('', true)
-        }
-        let hideSuggestion = setTimeout(() => {
-            clearTimeout(hideSuggestion)
-            let field = {...searchField};
-            searchHandler(field.value, false)
-            setShowSuggestions(true)
-        }, 200)
-    }
-
     return (
         <div id="search-box" data-js="search bar element">
             <form onSubmit={(e) => e.preventDefault()}>
@@ -97,7 +79,6 @@ export default function SearchBar(props) {
                     <Input 
                         onChange={searchData}
                         className={inputClasses}
-                        onBlur={clearSuggestions}
                         elementConfig = {searchField.elementConfig}
                         value={searchField.value}
                     />

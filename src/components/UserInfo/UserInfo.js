@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import './UserInfo.css'
-import Button from '../UI/Button/Button'
-import * as actions from '../../actions/index'
-import UserDetail from './userDetail/userDetail'
-import UpdateUserDetail from './UpdateUserDetail/UpdateUserDetail'
+import './UserInfo.css';
+import Button from '../UI/Button/Button';
+import * as actions from '../../actions/index';
+import UserDetail from './userDetail/userDetail';
+import UpdateUserDetail from './UpdateUserDetail/UpdateUserDetail';
 
 /***
  * 1 .Showing Selected Data: This component is to displaying selected data [UserDetail]
