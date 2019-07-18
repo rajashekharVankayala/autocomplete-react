@@ -59,7 +59,7 @@ class UpdateUserDetail extends Component {
 
     updateUserInfo(event,index){
         let inputFields = [...this.state.fields];
-        const val = event.target.value.trim();
+        const val = event.target.value.trimLeft();
         let formValid = Boolean(val.length);
         inputFields[index].value = val;
         inputFields[index].valid = formValid;
